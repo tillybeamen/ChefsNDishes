@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model List<Chef>
+<div class="text-center">
+    <div class="border-bottom border-dark">
+        <h1 class="display-5">Check out our roster of chefs!</h1>
+    </div>
+    <table class="table table-striped mt-5">
+        <thead class="table-dark">
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th># of Dishes</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Chef chef in Model)
+            {
+                int now = int.Parse(DateTime.Now.ToString("yyyyMMdd"));
+                int dob = int.Parse(chef.DOB.ToString("yyyyMMdd"));
+                int age = (now - dob) / 10000;
+                <tr>
+                    <td>@chef.FirstName @chef.LastName</td>
+                    <td>@age</td>
+                    <td>@chef.AllDishes.Count</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

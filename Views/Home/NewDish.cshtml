@@ -1,0 +1,56 @@
+@{
+    ViewData["Title"] = "New Dish";
+}
+
+@model Dish
+<div class="text-center">
+    <div class="border-bottom border-dark">
+        <h1 class="display-5">Add a Dish</h1>
+    </div>
+
+    <div class="mx-auto mt-5 border border-secondary p-3 w-75">
+        <form asp-action="CreateDish" asp-controller="Home" method="post">
+            <div class="d-flex justify-content-around">
+                <div>
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label">Name of Dish</label>
+                        <input asp-for="Name" class="form-control">
+                        <span asp-validation-for="Name" class="form-text"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Calories" class="form-label"># of Calories</label>
+                        <input asp-for="Calories" class="form-control">
+                        <span asp-validation-for="Calories" class="form-text"></span>
+                    </div>
+                </div>
+                <div>
+                    <div class="mb-3">
+                        <label asp-for="ChefId" class="form-label">Chef's Name</label>
+                        <select asp-for="ChefId" class="form-select">
+                            <option selected disabled>Choose a chef</option>
+                            @foreach (Chef chef in ViewBag.AllChefs)
+                            {
+                                <option value=@chef.ChefId>@chef.FirstName @chef.LastName</option>
+                            }
+                        </select>
+                        <span asp-validation-for="ChefId" class="form-text"></span>
+                    </div>
+                </div>
+                <div>
+                    <div class="mb-3">
+                        <label asp-for="Tastiness" class="form-label"></label>
+                        <select asp-for="Tastiness" class="form-select">
+                            <option selected disabled>Choose an option</option>
+                            @for (int i = 1; i <= 5; i++)
+                            {
+                                <option value=@i>@i</option>
+                            }
+                        </select>
+                        <span asp-validation-for="Tastiness" class="form-text"></span>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary">Add Dish</button>
+        </form>
+    </div>
+</div>

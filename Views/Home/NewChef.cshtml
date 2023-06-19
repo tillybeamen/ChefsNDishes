@@ -1,0 +1,49 @@
+@{
+    ViewData["Title"] = "New Chef";
+}
+
+@model Chef
+<div class="text-center">
+    <div class="border-bottom border-dark">
+        <h1 class="display-5">Add a Chef</h1>
+    </div>
+    
+    <div class="w-50 mx-auto mt-5">
+        <form asp-action="CreateChef" asp-controller="Home" method="post">
+            <div class="row g-3 align-items-center mx-auto mb-3">
+                <div class="col-auto">
+                    <label asp-for="FirstName" class="col-form-label"></label>
+                </div>
+                <div class="col-auto">
+                    <input asp-for="FirstName" class="form-control">
+                </div>
+                <div class="col-auto">
+                    <span asp-validation-for="FirstName" class="form-text"></span>
+                </div>
+            </div>
+            <div class="row g-3 align-items-center mx-auto mb-3">
+                <div class="col-auto">
+                    <label asp-for="LastName" class="col-form-label"></label>
+                </div>
+                <div class="col-auto">
+                    <input asp-for="LastName" class="form-control">
+                </div>
+                <div class="col-auto">
+                    <span asp-validation-for="LastName" class="form-text"></span>
+                </div>
+            </div>
+            <div class="row g-3 align-items-center mx-auto mb-3">
+                <div class="col-auto">
+                    <label asp-for="DOB" class="col-form-label"></label>
+                </div>
+                <div class="col-auto">
+                    <input asp-for="DOB" class="form-control">
+                </div>
+                <div class="col-auto">
+                    <span asp-validation-for="DOB" class="form-text"></span>
+                </div>
+            </div>
+            <button class="btn btn-primary">Add Chef</button>
+        </form>
+    </div>
+</div>
